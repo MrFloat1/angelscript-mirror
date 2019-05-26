@@ -1832,7 +1832,15 @@ void asCReader::ReadTypeDeclaration(asCTypeInfo *type, int phase, bool *isExtern
 							func->id = 0;
 							if( func->scriptData )
 								func->scriptData->byteCode.SetLength(0);
-							func->ReleaseInternal();
+							if (func->ReleaseInternal() == 0)
+							{
+								//Doesn't seem to be essential, as the fist error prevents further reading and use of "savedFunctions".
+								//If needed, would be better to remove by looping in reverse
+								//savedFunctions.RemoveValue(func);
+
+								//destroyed new function should not be left in the engine signeture data
+								engine->signatureIds.RemoveValue(func);
+							}
 						}
 					}
 					else
