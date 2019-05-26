@@ -1,0 +1,21 @@
+Test1@ Test1::opAssign(const Test1&in)
+
+Temps: 1
+
+Variables: 
+ -001: const Test1& other
+ 000: Test1 this
+ 001: (heap) Test1 {noname}
+
+
+- 2,42 -
+               VarDecl  0
+    0   1 *    SUSPEND
+    1   1 *    PshVPtr  v0
+    2   2 *    RefCpyV  v1, 20886384
+    4   2 *    PopPtr
+            {
+            }
+    5   1 *    LOADOBJ  v1
+            0:
+    6   1 *    RET      2
